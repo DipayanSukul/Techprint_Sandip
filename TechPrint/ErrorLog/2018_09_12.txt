@@ -1,0 +1,39 @@
+============================
+Error on [12-Sep-2018 04:29:44]
+Method: btnSave_Click
+Message: The remote name could not be resolved: 'sms.asaptech.net'
+Stack Trace:    at System.Net.HttpWebRequest.GetResponse()
+   at TechPrint.Transaction.JobCard.btnSave_Click(Object sender, EventArgs e) in f:\Software Development\DotNetProject\TechPrint\TechPrint\Transaction\JobCard.aspx.cs:line 1555
+============================
+
+============================
+Error on [12-Sep-2018 04:29:56]
+Method: btnSave_Click
+Message: The remote name could not be resolved: 'sms.asaptech.net'
+Stack Trace:    at System.Net.HttpWebRequest.GetResponse()
+   at TechPrint.Transaction.JobCard.btnSave_Click(Object sender, EventArgs e) in f:\Software Development\DotNetProject\TechPrint\TechPrint\Transaction\JobCard.aspx.cs:line 1555
+============================
+
+============================
+Error on [12-Sep-2018 04:30:13]
+Method: btnSave_Click
+Message: The remote name could not be resolved: 'sms.asaptech.net'
+Stack Trace:    at System.Net.HttpWebRequest.GetResponse()
+   at TechPrint.Transaction.JobCard.btnSave_Click(Object sender, EventArgs e) in f:\Software Development\DotNetProject\TechPrint\TechPrint\Transaction\JobCard.aspx.cs:line 1555
+============================
+
+============================
+Error on [12-Sep-2018 04:31:19]
+Method: btnSave_Click
+Message: The remote name could not be resolved: 'sms.asaptech.net'
+Stack Trace:    at System.Net.HttpWebRequest.GetResponse()
+   at TechPrint.Transaction.JobCard.btnSave_Click(Object sender, EventArgs e) in f:\Software Development\DotNetProject\TechPrint\TechPrint\Transaction\JobCard.aspx.cs:line 1555
+============================
+
+============================
+Error on [12-Sep-2018 06:52:33]
+Method: btnUploadPaperRate_Click
+Message: Object reference not set to an instance of an object.
+Stack Trace:    at TechPrint.Transaction.MRPManage.btnUploadPaperRate_Click(Object sender, EventArgs e) in f:\Software Development\DotNetProject\TechPrint\TechPrint\Transaction\MRPManage.aspx.cs:line 383
+============================
+

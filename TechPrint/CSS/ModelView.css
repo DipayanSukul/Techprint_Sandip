@@ -1,0 +1,24 @@
+﻿.panelClass
+{
+    background-color: lime;
+    width: 300px;
+}
+.height
+{
+    height: 50px;
+}
+
+.modalBackground
+{
+    background-color: #000000;
+    filter: alpha(opacity=40);
+    opacity: 0.5;
+}
+
+.ModalWindow
+{
+    border: solid 1px #000000;
+    background: #ffffff;
+    position: absolute;
+    top: -1000px;
+}

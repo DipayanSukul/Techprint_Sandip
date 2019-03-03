@@ -1,0 +1,32 @@
+﻿		.tdonhover
+        {
+        font-weight:bold;
+        font-size:x-small;   
+        }
+        .divgrid
+        {
+            height: 400px;
+            width: 100%;
+        }
+        .divgrid table
+        {
+            width: 100%;
+            background-color: #F2F2F2;
+            margin: 0 0 0 0;
+            border: solid 1px #525252;
+            border-collapse: collapse;
+        }
+        .divgrid table th
+        {
+            padding: 0px 0px 0px 0px;
+            color: #fff;
+            background: #75A71B /*#424242*/ url(../Image/grd_head.png) ;
+            border-left: solid 1px #525252;
+            font-size: 0.9em;
+            height:5px;
+        }
+        .divgrid table td
+        {
+        	font-size:x-small;
+        	text-align:justify;
+        }         

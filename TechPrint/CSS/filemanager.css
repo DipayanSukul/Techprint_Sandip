@@ -1,0 +1,177 @@
+﻿body 
+{
+    background-color:White;
+    font-family: Tahoma;
+    font-size:12px;
+    color: #444;
+    display:block;
+    text-align:center;
+    background:#f0f0f0 url("images/bgraster11.jpg");
+    background-position:left top;
+    background-repeat: repeat;
+    margin-top:40px;
+}
+form
+{
+    margin:0px;
+    display:block;
+}
+
+#main
+{
+    width:790px;
+    text-align:center;
+    border: 1px solid #bbb;
+    background-color: White;
+    padding: 60px;
+    display:block;
+    clear:both;
+    margin:0px;  
+    height:300px; 
+}
+
+#main h1
+{
+    font: normal 24px arial;
+}
+
+#contact
+{
+    text-align:left;
+    padding: 10px 20px 0 20px;
+}
+
+#banner
+{
+    width:890px;
+    text-align:left;
+    border: 1px solid #bbb;
+    border-bottom:0;
+    background-color: White;
+    background-image: url("images/redfade.jpg");
+    background-position:-50px bottom;
+    background-repeat:no-repeat;
+    padding: 10px;
+    margin:0;
+    display:inline-block;
+    height:90px;
+}
+#bannertext
+{
+    float:left;
+    color: #222;
+    padding:10px;
+    display:block;
+}
+#bannertext h1
+{
+    font: normal 1.9em Tahoma;
+    margin:0;
+}
+#bannertext p
+{
+    font: normal 1.4em Tahoma;
+    margin:0;
+}
+h2
+{
+    font: bold 1.2em Tahoma;
+}
+
+#credits
+{
+    width:892px;
+    text-align:right;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-top:0;
+    margin:0;
+    display:inline-block;
+    font: normal 0.9em Tahoma;
+    line-height:1.5em;
+    color: #fff;
+    background-image: url("../image/blackfade.jpg");
+    background-position:left center;
+    background-repeat:no-repeat;
+}
+
+#credits B
+{
+    font: bold 0.8em Tahoma;
+}
+#credits A
+{
+    text-decoration: none;
+    color: #ccc;
+}
+#credits A:Hover
+{
+    text-decoration: underline;
+    color: #fff;
+}
+
+#footer
+{
+    font: normal 0.8em tahoma;
+    float:left;
+    position:relative;
+    top:7px;
+    left:10px;
+}
+
+#footer A
+{
+    font: normal 1.5em tahoma;
+    color: White;
+    text-decoration: none;
+}
+.ResultPane
+{
+    padding:20px;
+    background: url("images/preview_info_48.gif") bottom right;
+    background-repeat:no-repeat;
+}
+
+.InfoPane
+{
+    display:none;
+}
+
+.UploadPane
+{
+    background: url("images/files_up_48.gif") bottom right;
+    background-repeat:no-repeat;
+    padding:20px;
+}
+.ContactPane
+{
+    background:#fff url("images/envelope_info_48.gif") bottom right;
+    background-repeat:no-repeat;
+}
+.TreeviewPane
+{
+    background:#fff url("images/diskette_info_48.gif") bottom right;
+    background-repeat:no-repeat;
+}
+.UsersPane
+{
+    background:#fff url("images/admin_2_config_48.gif") bottom right;
+    background-repeat:no-repeat;
+    padding:1px;
+}
+
+.HelpPane
+{
+    background:#fff url("images/help_48.gif") bottom right;
+    background-repeat:no-repeat;
+    padding:15px;
+    text-align:left;
+}
+.HelpPane h2
+{
+    font: bold 13px Tahoma;
+}
+.ContactPane h2
+{
+    font: bold 13px Tahoma;
+}

@@ -1,0 +1,26 @@
+============================
+Error on [11-Sep-2018 12:34:47]
+Method: btnUploadPaperRate_Click
+Message: Thread was being aborted.
+Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at TechPrint.Transaction.MRPManage.btnUploadPaperRate_Click(Object sender, EventArgs e) in f:\Software Development\DotNetProject\TechPrint\TechPrint\Transaction\MRPManage.aspx.cs:line 440
+============================
+
+============================
+Error on [11-Sep-2018 12:42:18]
+Method: btnUploadPaperRate_Click
+Message: Thread was being aborted.
+Stack Trace:    at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at TechPrint.Transaction.MRPManage.btnUploadPaperRate_Click(Object sender, EventArgs e) in f:\Software Development\DotNetProject\TechPrint\TechPrint\Transaction\MRPManage.aspx.cs:line 440
+============================
+

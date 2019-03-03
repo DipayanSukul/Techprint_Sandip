@@ -1,0 +1,863 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TechPrintModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="Telephone" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="GSTNo" Type="varchar" MaxLength="20" />
+          <Property Name="RecMode" Type="char" MaxLength="1" />
+          <Property Name="AddEditBy" Type="int" />
+          <Property Name="AddEditOn" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TechPrint.dbo.PaperRate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PaperRate">
+          <Key>
+            <PropertyRef Name="PaperRateID" />
+          </Key>
+          <Property Name="PaperRateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GSMID" Type="int" />
+          <Property Name="PaperSizeID" Type="int" />
+          <Property Name="Paperlength" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaperWidth" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaperTypeID" Type="int" />
+          <Property Name="PaperManufaturerID" Type="int" />
+          <Property Name="Rate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AddEditBy" Type="int" />
+          <Property Name="AddEditOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentNumber" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentDate" Type="date" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="PaymentMode" Type="int" />
+          <Property Name="PaidAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentDetail" Type="varchar" MaxLength="500" />
+          <Property Name="FinYear" Type="varchar" MaxLength="50" />
+          <Property Name="RecMode" Type="char" MaxLength="1" />
+          <Property Name="CreateBy" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LMB" Type="int" />
+          <Property Name="LMD" Type="datetime" />
+          <Property Name="DeleteBy" Type="int" />
+          <Property Name="DeleteDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TechPrint.dbo.PaymentDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="PaymentDetailID" />
+          </Key>
+          <Property Name="PaymentDetailID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentID" Type="bigint" />
+          <Property Name="QuotationID" Type="bigint" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="PaymentMode">
+          <Key>
+            <PropertyRef Name="PaymentModeID" />
+          </Key>
+          <Property Name="PaymentModeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PMode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PrintComponent">
+          <Key>
+            <PropertyRef Name="PrintComponentID" />
+          </Key>
+          <Property Name="PrintComponentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrintComponentName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PrintingParameter">
+          <Key>
+            <PropertyRef Name="PrintingParameterID" />
+          </Key>
+          <Property Name="PrintingParameterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrintingParameterTypeID" Type="int" />
+          <Property Name="PrintingParameterName" Type="varchar" MaxLength="100" />
+          <Property Name="PrintingParameterDescription" Type="varchar" MaxLength="500" />
+          <Property Name="ParameterValue1" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ParameterValue2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ParameterValue3" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ParameterValue4" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SellPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RecMode" Type="char" MaxLength="10" />
+          <Property Name="CreateBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LMB" Type="int" />
+          <Property Name="LMD" Type="datetime" />
+          <Property Name="DeleteBy" Type="int" />
+          <Property Name="DeleteDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PrintingParameterType">
+          <Key>
+            <PropertyRef Name="PrintingParameterTypeID" />
+          </Key>
+          <Property Name="PrintingParameterTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrintingParameterTypeName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PrintRateCalculation">
+          <Key>
+            <PropertyRef Name="PrintRateID" />
+          </Key>
+          <Property Name="PrintRateID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CuttingSizeID" Type="int" />
+          <Property Name="PlateID" Type="int" />
+          <Property Name="ColorID" Type="int" />
+          <Property Name="PlateCost1K" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ColorCost1K" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PlateCost10K" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ColorCost10K" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RecMode" Type="varchar" MaxLength="50" />
+          <Property Name="UploadBy" Type="int" />
+          <Property Name="UploadDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="QuotationJobSheet">
+          <Key>
+            <PropertyRef Name="QuotationID" />
+          </Key>
+          <Property Name="QuotationID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuotationNO" Type="varchar" MaxLength="50" />
+          <Property Name="QuotationDate" Type="date" />
+          <Property Name="IS_JOB" Type="bit" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="ItemID" Type="int" />
+          <Property Name="ItemDescription" Type="varchar" MaxLength="500" />
+          <Property Name="TaxID" Type="int" />
+          <Property Name="GSTPercentage" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GSTWOPaper" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CGSTAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SGSTAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IGSTAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TaxableAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalBillingAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RoundOff" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AmountPayable" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OutstandingAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="FinYear" Type="varchar" MaxLength="50" />
+          <Property Name="RecMode" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LMB" Type="int" />
+          <Property Name="LMD" Type="datetime" />
+          <Property Name="DeleteBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="QuotationJobSheetDetail">
+          <Key>
+            <PropertyRef Name="QuotationJobSheetDetailID" />
+          </Key>
+          <Property Name="QuotationJobSheetDetailID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuotationID" Type="bigint" />
+          <Property Name="PrintComponentID" Type="int" />
+          <Property Name="NoOfSheet" Type="int" />
+          <Property Name="GSMID" Type="int" />
+          <Property Name="GSMValue" Type="int" />
+          <Property Name="PaperSizeID" Type="int" />
+          <Property Name="PaperLength" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaperWidth" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaperTypeID" Type="int" />
+          <Property Name="PaperManufaturerID" Type="int" />
+          <Property Name="NoOfSheetPrintDetail" Type="int" />
+          <Property Name="PaperSizeIDPrintDetail" Type="int" />
+          <Property Name="Impression" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CuttingID" Type="int" />
+          <Property Name="NoofCuttingPices" Type="int" />
+          <Property Name="FinishSize" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SideID" Type="int" />
+          <Property Name="ColourID" Type="int" />
+          <Property Name="PlateTypeID" Type="int" />
+          <Property Name="MachineID" Type="int" />
+          <Property Name="FabricationItemID" Type="int" />
+          <Property Name="FabricationItemSize" Type="varchar" MaxLength="500" />
+          <Property Name="PackagingItemID" Type="int" />
+          <Property Name="LabourCharge" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TransportCharge" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TransportUnitID" Type="int" />
+          <Property Name="OperatorID" Type="int" />
+          <Property Name="Narration" Type="varchar" MaxLength="500" />
+          <Property Name="LineQuantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LineRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LineAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LineGST" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginID" Type="varchar" MaxLength="5" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Nane" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="15" />
+          <Property Name="Email" Type="varchar" MaxLength="75" />
+          <Property Name="IsSystemPermission" Type="bit" />
+          <Property Name="IsUserPermission" Type="bit" />
+          <Property Name="RecMode" Type="char" MaxLength="1" />
+          <Property Name="AddEditBy" Type="int" />
+          <Property Name="AddEditOn" Type="datetime" />
+        </EntityType>
+        <Function Name="USP_BIND_MASTER_DATA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MasterTypeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_MANAGE_JOB_SHEET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="QuotationID" Type="bigint" Mode="In" />
+          <Parameter Name="QuotationNO" Type="varchar" Mode="In" />
+          <Parameter Name="QuotationDate" Type="date" Mode="In" />
+          <Parameter Name="IS_JOB" Type="bit" Mode="In" />
+          <Parameter Name="CustomerID" Type="int" Mode="In" />
+          <Parameter Name="ItemID" Type="int" Mode="In" />
+          <Parameter Name="ItemDescription" Type="varchar" Mode="In" />
+          <Parameter Name="TaxID" Type="int" Mode="In" />
+          <Parameter Name="GSTPercentage" Type="decimal" Mode="In" />
+          <Parameter Name="GSTWOPaper" Type="decimal" Mode="In" />
+          <Parameter Name="CGSTAmount" Type="decimal" Mode="In" />
+          <Parameter Name="SGSTAmount" Type="decimal" Mode="In" />
+          <Parameter Name="IGSTAmount" Type="decimal" Mode="In" />
+          <Parameter Name="TaxableAmount" Type="decimal" Mode="In" />
+          <Parameter Name="Discount" Type="decimal" Mode="In" />
+          <Parameter Name="TotalBillingAmount" Type="decimal" Mode="In" />
+          <Parameter Name="AmountPayable" Type="decimal" Mode="In" />
+          <Parameter Name="RoundOff" Type="decimal" Mode="In" />
+          <Parameter Name="AmountPaid" Type="decimal" Mode="In" />
+          <Parameter Name="Remarks" Type="varchar" Mode="In" />
+          <Parameter Name="FinYear" Type="varchar" Mode="In" />
+          <Parameter Name="RequestBy" Type="int" Mode="In" />
+          <Parameter Name="OpMode" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_MANAGE_PRINT_RATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CuttingSizeID" Type="int" Mode="In" />
+          <Parameter Name="RequestBy" Type="int" Mode="In" />
+          <Parameter Name="OpMode" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_PAYMENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PaymentID" Type="bigint" Mode="In" />
+          <Parameter Name="PaymentDate" Type="date" Mode="In" />
+          <Parameter Name="CustomerID" Type="int" Mode="In" />
+          <Parameter Name="PaymentMode" Type="int" Mode="In" />
+          <Parameter Name="PaidAmount" Type="decimal" Mode="In" />
+          <Parameter Name="PaymentDetail" Type="varchar" Mode="In" />
+          <Parameter Name="RequestBy" Type="int" Mode="In" />
+          <Parameter Name="FinYear" Type="varchar" Mode="In" />
+          <Parameter Name="OpMode" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_SEARCH_PAYMENT_LIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CurrentSession" Type="nvarchar" Mode="In" />
+          <Parameter Name="SearchColumn" Type="nvarchar" Mode="In" />
+          <Parameter Name="SearchText" Type="nvarchar" Mode="In" />
+          <Parameter Name="FromDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="ToDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="USP_SEARCH_QUOTATION_LIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CurrentSession" Type="nvarchar" Mode="In" />
+          <Parameter Name="SearchColumn" Type="nvarchar" Mode="In" />
+          <Parameter Name="SearchText" Type="nvarchar" Mode="In" />
+          <Parameter Name="FromDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="ToDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="TechPrintModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMode" EntityType="Self.PaymentMode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrintComponent" EntityType="Self.PrintComponent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrintingParameter" EntityType="Self.PrintingParameter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrintingParameterType" EntityType="Self.PrintingParameterType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrintRateCalculation" EntityType="Self.PrintRateCalculation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuotationJobSheet" EntityType="Self.QuotationJobSheet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuotationJobSheetDetail" EntityType="Self.QuotationJobSheetDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaperRate" EntityType="Self.PaperRate" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PaperRate].[PaperRateID] AS [PaperRateID], 
+    [PaperRate].[GSMID] AS [GSMID], 
+    [PaperRate].[PaperSizeID] AS [PaperSizeID], 
+    [PaperRate].[Paperlength] AS [Paperlength], 
+    [PaperRate].[PaperWidth] AS [PaperWidth], 
+    [PaperRate].[PaperTypeID] AS [PaperTypeID], 
+    [PaperRate].[PaperManufaturerID] AS [PaperManufaturerID], 
+    [PaperRate].[Rate] AS [Rate], 
+    [PaperRate].[AddEditBy] AS [AddEditBy], 
+    [PaperRate].[AddEditOn] AS [AddEditOn]
+    FROM [dbo].[PaperRate] AS [PaperRate]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PaymentDetail" EntityType="Self.PaymentDetail" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PaymentDetail].[PaymentDetailID] AS [PaymentDetailID], 
+    [PaymentDetail].[PaymentID] AS [PaymentID], 
+    [PaymentDetail].[QuotationID] AS [QuotationID], 
+    [PaymentDetail].[Amount] AS [Amount]
+    FROM [dbo].[PaymentDetail] AS [PaymentDetail]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TechPrintModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GSTNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RecMode" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AddEditBy" Type="Int32" />
+          <Property Name="AddEditOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="0" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="PaymentMode" Type="Int32" />
+          <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentDetail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FinYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RecMode" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CreateBy" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LMB" Type="Int32" />
+          <Property Name="LMD" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int32" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PaymentMode">
+          <Key>
+            <PropertyRef Name="PaymentModeID" />
+          </Key>
+          <Property Name="PaymentModeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PrintComponent">
+          <Key>
+            <PropertyRef Name="PrintComponentID" />
+          </Key>
+          <Property Name="PrintComponentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrintComponentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PrintingParameter">
+          <Key>
+            <PropertyRef Name="PrintingParameterID" />
+          </Key>
+          <Property Name="PrintingParameterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrintingParameterTypeID" Type="Int32" />
+          <Property Name="PrintingParameterName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PrintingParameterDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ParameterValue1" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ParameterValue2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ParameterValue3" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ParameterValue4" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SellPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RecMode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="CreateBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LMB" Type="Int32" />
+          <Property Name="LMD" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int32" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PrintingParameterType">
+          <Key>
+            <PropertyRef Name="PrintingParameterTypeID" />
+          </Key>
+          <Property Name="PrintingParameterTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrintingParameterTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PrintRateCalculation">
+          <Key>
+            <PropertyRef Name="PrintRateID" />
+          </Key>
+          <Property Name="PrintRateID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CuttingSizeID" Type="Int32" />
+          <Property Name="PlateID" Type="Int32" />
+          <Property Name="ColorID" Type="Int32" />
+          <Property Name="PlateCost1K" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ColorCost1K" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PlateCost10K" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ColorCost10K" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RecMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UploadBy" Type="Int32" />
+          <Property Name="UploadDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="QuotationJobSheet">
+          <Key>
+            <PropertyRef Name="QuotationID" />
+          </Key>
+          <Property Name="QuotationID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuotationNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="QuotationDate" Type="DateTime" Precision="0" />
+          <Property Name="IS_JOB" Type="Boolean" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="ItemID" Type="Int32" />
+          <Property Name="ItemDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TaxID" Type="Int32" />
+          <Property Name="GSTPercentage" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GSTWOPaper" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CGSTAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SGSTAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IGSTAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TaxableAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalBillingAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RoundOff" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AmountPayable" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OutstandingAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FinYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RecMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LMB" Type="Int32" />
+          <Property Name="LMD" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="QuotationJobSheetDetail">
+          <Key>
+            <PropertyRef Name="QuotationJobSheetDetailID" />
+          </Key>
+          <Property Name="QuotationJobSheetDetailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuotationID" Type="Int64" />
+          <Property Name="PrintComponentID" Type="Int32" />
+          <Property Name="NoOfSheet" Type="Int32" />
+          <Property Name="GSMID" Type="Int32" />
+          <Property Name="GSMValue" Type="Int32" />
+          <Property Name="PaperSizeID" Type="Int32" />
+          <Property Name="PaperLength" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaperWidth" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaperTypeID" Type="Int32" />
+          <Property Name="PaperManufaturerID" Type="Int32" />
+          <Property Name="NoOfSheetPrintDetail" Type="Int32" />
+          <Property Name="PaperSizeIDPrintDetail" Type="Int32" />
+          <Property Name="Impression" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CuttingID" Type="Int32" />
+          <Property Name="NoofCuttingPices" Type="Int32" />
+          <Property Name="FinishSize" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SideID" Type="Int32" />
+          <Property Name="ColourID" Type="Int32" />
+          <Property Name="PlateTypeID" Type="Int32" />
+          <Property Name="MachineID" Type="Int32" />
+          <Property Name="FabricationItemID" Type="Int32" />
+          <Property Name="FabricationItemSize" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PackagingItemID" Type="Int32" />
+          <Property Name="LabourCharge" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TransportCharge" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TransportUnitID" Type="Int32" />
+          <Property Name="OperatorID" Type="Int32" />
+          <Property Name="Narration" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LineQuantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LineRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LineAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LineGST" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nane" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="IsSystemPermission" Type="Boolean" />
+          <Property Name="IsUserPermission" Type="Boolean" />
+          <Property Name="RecMode" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AddEditBy" Type="Int32" />
+          <Property Name="AddEditOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PaperRate">
+          <Key>
+            <PropertyRef Name="PaperRateID" />
+          </Key>
+          <Property Name="PaperRateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GSMID" Type="Int32" />
+          <Property Name="PaperSizeID" Type="Int32" />
+          <Property Name="Paperlength" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaperWidth" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaperTypeID" Type="Int32" />
+          <Property Name="PaperManufaturerID" Type="Int32" />
+          <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AddEditBy" Type="Int32" />
+          <Property Name="AddEditOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="PaymentDetailID" />
+          </Key>
+          <Property Name="PaymentDetailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentID" Type="Int64" />
+          <Property Name="QuotationID" Type="Int64" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityContainer Name="TechPrintEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="PaymentModes" EntityType="Self.PaymentMode" />
+          <EntitySet Name="PrintComponents" EntityType="Self.PrintComponent" />
+          <EntitySet Name="PrintingParameters" EntityType="Self.PrintingParameter" />
+          <EntitySet Name="PrintingParameterTypes" EntityType="Self.PrintingParameterType" />
+          <EntitySet Name="PrintRateCalculations" EntityType="Self.PrintRateCalculation" />
+          <EntitySet Name="QuotationJobSheets" EntityType="Self.QuotationJobSheet" />
+          <EntitySet Name="QuotationJobSheetDetails" EntityType="Self.QuotationJobSheetDetail" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="PaperRates" EntityType="Self.PaperRate" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetail" />
+          <FunctionImport Name="USP_BIND_MASTER_DATA" ReturnType="Collection(TechPrintModel.USP_BIND_MASTER_DATA_Result)">
+            <Parameter Name="MasterTypeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_MANAGE_JOB_SHEET">
+            <Parameter Name="QuotationID" Mode="In" Type="Int64" />
+            <Parameter Name="QuotationNO" Mode="In" Type="String" />
+            <Parameter Name="QuotationDate" Mode="In" Type="DateTime" />
+            <Parameter Name="IS_JOB" Mode="In" Type="Boolean" />
+            <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+            <Parameter Name="ItemID" Mode="In" Type="Int32" />
+            <Parameter Name="ItemDescription" Mode="In" Type="String" />
+            <Parameter Name="TaxID" Mode="In" Type="Int32" />
+            <Parameter Name="GSTPercentage" Mode="In" Type="Decimal" />
+            <Parameter Name="GSTWOPaper" Mode="In" Type="Decimal" />
+            <Parameter Name="CGSTAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="SGSTAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="IGSTAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="TaxableAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="Discount" Mode="In" Type="Decimal" />
+            <Parameter Name="TotalBillingAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="AmountPayable" Mode="In" Type="Decimal" />
+            <Parameter Name="RoundOff" Mode="In" Type="Decimal" />
+            <Parameter Name="AmountPaid" Mode="In" Type="Decimal" />
+            <Parameter Name="Remarks" Mode="In" Type="String" />
+            <Parameter Name="FinYear" Mode="In" Type="String" />
+            <Parameter Name="RequestBy" Mode="In" Type="Int32" />
+            <Parameter Name="OpMode" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_MANAGE_PRINT_RATE">
+            <Parameter Name="CuttingSizeID" Mode="In" Type="Int32" />
+            <Parameter Name="RequestBy" Mode="In" Type="Int32" />
+            <Parameter Name="OpMode" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_PAYMENT">
+            <Parameter Name="PaymentID" Mode="In" Type="Int64" />
+            <Parameter Name="PaymentDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+            <Parameter Name="PaymentMode" Mode="In" Type="Int32" />
+            <Parameter Name="PaidAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="PaymentDetail" Mode="In" Type="String" />
+            <Parameter Name="RequestBy" Mode="In" Type="Int32" />
+            <Parameter Name="FinYear" Mode="In" Type="String" />
+            <Parameter Name="OpMode" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_SEARCH_PAYMENT_LIST">
+            <Parameter Name="CurrentSession" Mode="In" Type="String" />
+            <Parameter Name="SearchColumn" Mode="In" Type="String" />
+            <Parameter Name="SearchText" Mode="In" Type="String" />
+            <Parameter Name="FromDate" Mode="In" Type="String" />
+            <Parameter Name="ToDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_SEARCH_QUOTATION_LIST">
+            <Parameter Name="CurrentSession" Mode="In" Type="String" />
+            <Parameter Name="SearchColumn" Mode="In" Type="String" />
+            <Parameter Name="SearchText" Mode="In" Type="String" />
+            <Parameter Name="FromDate" Mode="In" Type="String" />
+            <Parameter Name="ToDate" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="USP_BIND_MASTER_DATA_Result">
+          <Property Type="Int32" Name="PrintingParameterID" Nullable="false" />
+          <Property Type="String" Name="PrintingParameterTypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PrintingParameterName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PrintingParameterDescription" Nullable="true" MaxLength="500" />
+          <Property Type="Decimal" Name="ParameterValue1" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ParameterValue2" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ParameterValue3" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="SellPrice" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TechPrintModelStoreContainer" CdmEntityContainer="TechPrintEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="TechPrintModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+                <ScalarProperty Name="RecMode" ColumnName="RecMode" />
+                <ScalarProperty Name="AddEditBy" ColumnName="AddEditBy" />
+                <ScalarProperty Name="AddEditOn" ColumnName="AddEditOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="TechPrintModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="PaymentNumber" ColumnName="PaymentNumber" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="PaymentDetail" ColumnName="PaymentDetail" />
+                <ScalarProperty Name="FinYear" ColumnName="FinYear" />
+                <ScalarProperty Name="RecMode" ColumnName="RecMode" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LMB" ColumnName="LMB" />
+                <ScalarProperty Name="LMD" ColumnName="LMD" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentModes">
+            <EntityTypeMapping TypeName="TechPrintModel.PaymentMode">
+              <MappingFragment StoreEntitySet="PaymentMode">
+                <ScalarProperty Name="PaymentModeID" ColumnName="PaymentModeID" />
+                <ScalarProperty Name="PMode" ColumnName="PMode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrintComponents">
+            <EntityTypeMapping TypeName="TechPrintModel.PrintComponent">
+              <MappingFragment StoreEntitySet="PrintComponent">
+                <ScalarProperty Name="PrintComponentID" ColumnName="PrintComponentID" />
+                <ScalarProperty Name="PrintComponentName" ColumnName="PrintComponentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrintingParameters">
+            <EntityTypeMapping TypeName="TechPrintModel.PrintingParameter">
+              <MappingFragment StoreEntitySet="PrintingParameter">
+                <ScalarProperty Name="PrintingParameterID" ColumnName="PrintingParameterID" />
+                <ScalarProperty Name="PrintingParameterTypeID" ColumnName="PrintingParameterTypeID" />
+                <ScalarProperty Name="PrintingParameterName" ColumnName="PrintingParameterName" />
+                <ScalarProperty Name="PrintingParameterDescription" ColumnName="PrintingParameterDescription" />
+                <ScalarProperty Name="ParameterValue1" ColumnName="ParameterValue1" />
+                <ScalarProperty Name="ParameterValue2" ColumnName="ParameterValue2" />
+                <ScalarProperty Name="ParameterValue3" ColumnName="ParameterValue3" />
+                <ScalarProperty Name="ParameterValue4" ColumnName="ParameterValue4" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="RecMode" ColumnName="RecMode" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LMB" ColumnName="LMB" />
+                <ScalarProperty Name="LMD" ColumnName="LMD" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrintingParameterTypes">
+            <EntityTypeMapping TypeName="TechPrintModel.PrintingParameterType">
+              <MappingFragment StoreEntitySet="PrintingParameterType">
+                <ScalarProperty Name="PrintingParameterTypeID" ColumnName="PrintingParameterTypeID" />
+                <ScalarProperty Name="PrintingParameterTypeName" ColumnName="PrintingParameterTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrintRateCalculations">
+            <EntityTypeMapping TypeName="TechPrintModel.PrintRateCalculation">
+              <MappingFragment StoreEntitySet="PrintRateCalculation">
+                <ScalarProperty Name="PrintRateID" ColumnName="PrintRateID" />
+                <ScalarProperty Name="CuttingSizeID" ColumnName="CuttingSizeID" />
+                <ScalarProperty Name="PlateID" ColumnName="PlateID" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="PlateCost1K" ColumnName="PlateCost1K" />
+                <ScalarProperty Name="ColorCost1K" ColumnName="ColorCost1K" />
+                <ScalarProperty Name="PlateCost10K" ColumnName="PlateCost10K" />
+                <ScalarProperty Name="ColorCost10K" ColumnName="ColorCost10K" />
+                <ScalarProperty Name="RecMode" ColumnName="RecMode" />
+                <ScalarProperty Name="UploadBy" ColumnName="UploadBy" />
+                <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuotationJobSheets">
+            <EntityTypeMapping TypeName="TechPrintModel.QuotationJobSheet">
+              <MappingFragment StoreEntitySet="QuotationJobSheet">
+                <ScalarProperty Name="QuotationID" ColumnName="QuotationID" />
+                <ScalarProperty Name="QuotationNO" ColumnName="QuotationNO" />
+                <ScalarProperty Name="QuotationDate" ColumnName="QuotationDate" />
+                <ScalarProperty Name="IS_JOB" ColumnName="IS_JOB" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+                <ScalarProperty Name="GSTPercentage" ColumnName="GSTPercentage" />
+                <ScalarProperty Name="GSTWOPaper" ColumnName="GSTWOPaper" />
+                <ScalarProperty Name="CGSTAmount" ColumnName="CGSTAmount" />
+                <ScalarProperty Name="SGSTAmount" ColumnName="SGSTAmount" />
+                <ScalarProperty Name="IGSTAmount" ColumnName="IGSTAmount" />
+                <ScalarProperty Name="TaxableAmount" ColumnName="TaxableAmount" />
+                <ScalarProperty Name="TotalBillingAmount" ColumnName="TotalBillingAmount" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="RoundOff" ColumnName="RoundOff" />
+                <ScalarProperty Name="AmountPayable" ColumnName="AmountPayable" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="OutstandingAmount" ColumnName="OutstandingAmount" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="FinYear" ColumnName="FinYear" />
+                <ScalarProperty Name="RecMode" ColumnName="RecMode" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LMB" ColumnName="LMB" />
+                <ScalarProperty Name="LMD" ColumnName="LMD" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuotationJobSheetDetails">
+            <EntityTypeMapping TypeName="TechPrintModel.QuotationJobSheetDetail">
+              <MappingFragment StoreEntitySet="QuotationJobSheetDetail">
+                <ScalarProperty Name="QuotationJobSheetDetailID" ColumnName="QuotationJobSheetDetailID" />
+                <ScalarProperty Name="QuotationID" ColumnName="QuotationID" />
+                <ScalarProperty Name="PrintComponentID" ColumnName="PrintComponentID" />
+                <ScalarProperty Name="NoOfSheet" ColumnName="NoOfSheet" />
+                <ScalarProperty Name="GSMID" ColumnName="GSMID" />
+                <ScalarProperty Name="GSMValue" ColumnName="GSMValue" />
+                <ScalarProperty Name="PaperSizeID" ColumnName="PaperSizeID" />
+                <ScalarProperty Name="PaperLength" ColumnName="PaperLength" />
+                <ScalarProperty Name="PaperWidth" ColumnName="PaperWidth" />
+                <ScalarProperty Name="PaperTypeID" ColumnName="PaperTypeID" />
+                <ScalarProperty Name="PaperManufaturerID" ColumnName="PaperManufaturerID" />
+                <ScalarProperty Name="NoOfSheetPrintDetail" ColumnName="NoOfSheetPrintDetail" />
+                <ScalarProperty Name="PaperSizeIDPrintDetail" ColumnName="PaperSizeIDPrintDetail" />
+                <ScalarProperty Name="Impression" ColumnName="Impression" />
+                <ScalarProperty Name="CuttingID" ColumnName="CuttingID" />
+                <ScalarProperty Name="NoofCuttingPices" ColumnName="NoofCuttingPices" />
+                <ScalarProperty Name="FinishSize" ColumnName="FinishSize" />
+                <ScalarProperty Name="SideID" ColumnName="SideID" />
+                <ScalarProperty Name="ColourID" ColumnName="ColourID" />
+                <ScalarProperty Name="PlateTypeID" ColumnName="PlateTypeID" />
+                <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+                <ScalarProperty Name="FabricationItemID" ColumnName="FabricationItemID" />
+                <ScalarProperty Name="FabricationItemSize" ColumnName="FabricationItemSize" />
+                <ScalarProperty Name="PackagingItemID" ColumnName="PackagingItemID" />
+                <ScalarProperty Name="LabourCharge" ColumnName="LabourCharge" />
+                <ScalarProperty Name="TransportCharge" ColumnName="TransportCharge" />
+                <ScalarProperty Name="TransportUnitID" ColumnName="TransportUnitID" />
+                <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="LineQuantity" ColumnName="LineQuantity" />
+                <ScalarProperty Name="LineRate" ColumnName="LineRate" />
+                <ScalarProperty Name="LineAmount" ColumnName="LineAmount" />
+                <ScalarProperty Name="LineGST" ColumnName="LineGST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TechPrintModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Nane" ColumnName="Nane" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IsSystemPermission" ColumnName="IsSystemPermission" />
+                <ScalarProperty Name="IsUserPermission" ColumnName="IsUserPermission" />
+                <ScalarProperty Name="RecMode" ColumnName="RecMode" />
+                <ScalarProperty Name="AddEditBy" ColumnName="AddEditBy" />
+                <ScalarProperty Name="AddEditOn" ColumnName="AddEditOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaperRates">
+            <EntityTypeMapping TypeName="TechPrintModel.PaperRate">
+              <MappingFragment StoreEntitySet="PaperRate">
+                <ScalarProperty Name="PaperRateID" ColumnName="PaperRateID" />
+                <ScalarProperty Name="GSMID" ColumnName="GSMID" />
+                <ScalarProperty Name="PaperSizeID" ColumnName="PaperSizeID" />
+                <ScalarProperty Name="Paperlength" ColumnName="Paperlength" />
+                <ScalarProperty Name="PaperWidth" ColumnName="PaperWidth" />
+                <ScalarProperty Name="PaperTypeID" ColumnName="PaperTypeID" />
+                <ScalarProperty Name="PaperManufaturerID" ColumnName="PaperManufaturerID" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="AddEditBy" ColumnName="AddEditBy" />
+                <ScalarProperty Name="AddEditOn" ColumnName="AddEditOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDetails">
+            <EntityTypeMapping TypeName="TechPrintModel.PaymentDetail">
+              <MappingFragment StoreEntitySet="PaymentDetail">
+                <ScalarProperty Name="PaymentDetailID" ColumnName="PaymentDetailID" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="QuotationID" ColumnName="QuotationID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="USP_BIND_MASTER_DATA" FunctionName="TechPrintModel.Store.USP_BIND_MASTER_DATA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TechPrintModel.USP_BIND_MASTER_DATA_Result">
+                <ScalarProperty Name="PrintingParameterID" ColumnName="PrintingParameterID" />
+                <ScalarProperty Name="PrintingParameterTypeName" ColumnName="PrintingParameterTypeName" />
+                <ScalarProperty Name="PrintingParameterName" ColumnName="PrintingParameterName" />
+                <ScalarProperty Name="PrintingParameterDescription" ColumnName="PrintingParameterDescription" />
+                <ScalarProperty Name="ParameterValue1" ColumnName="ParameterValue1" />
+                <ScalarProperty Name="ParameterValue2" ColumnName="ParameterValue2" />
+                <ScalarProperty Name="ParameterValue3" ColumnName="ParameterValue3" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_MANAGE_JOB_SHEET" FunctionName="TechPrintModel.Store.USP_MANAGE_JOB_SHEET" />
+          <FunctionImportMapping FunctionImportName="USP_MANAGE_PRINT_RATE" FunctionName="TechPrintModel.Store.USP_MANAGE_PRINT_RATE" />
+          <FunctionImportMapping FunctionImportName="USP_PAYMENT" FunctionName="TechPrintModel.Store.USP_PAYMENT" />
+          <FunctionImportMapping FunctionImportName="USP_SEARCH_PAYMENT_LIST" FunctionName="TechPrintModel.Store.USP_SEARCH_PAYMENT_LIST" />
+          <FunctionImportMapping FunctionImportName="USP_SEARCH_QUOTATION_LIST" FunctionName="TechPrintModel.Store.USP_SEARCH_QUOTATION_LIST" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

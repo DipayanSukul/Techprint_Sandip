@@ -1,0 +1,644 @@
+﻿body
+{
+}
+.textbox_mask
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 16px;
+    width: 180px;
+    border: solid 1px #cccccc;
+    margin-bottom: 0px;
+    color: Gray;
+}
+
+
+.textbox
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    border-top: solid 1px #8e8e8e;
+    border-right: solid 1px #d1d1d1;
+    border-left: solid 1px #d1d1d1;
+    border-bottom: solid 1px #e4e4e4;
+    text-transform: uppercase;
+    height: 16px;
+    width: 180px;
+    resize: none;
+}
+.textbox:focus
+{
+    border-color: #4488cc;
+    border-style: solid;
+    border-width: 2px;
+    outline: 0;
+}
+.grid_row
+{
+    font-size: 10px;
+    font-family: Verdana;
+    color: Blue;
+    font-style: normal;
+}
+.textboxnumeric
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 18px;
+    width: 80px;
+    border: solid 1px #cccccc;
+}
+.Multilinetextbox
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 22px;
+    width: 180px;
+    border-style: solid;
+}
+/*-----------------text box upper case--------------------------------*/
+.textbox_
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 18px;
+    width: 180px;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+/*Email lower case*/
+.textbox_email
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 18px;
+    width: 180px;
+    text-transform: lowercase;
+    border-style: solid;
+}
+.textboxnumeric_
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 18px;
+    width: 80px;
+    text-transform: uppercase;
+    border-style: solid;
+}
+.Multilinetextbox_
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 22px;
+    width: 180px;
+    text-transform: uppercase;
+    border-style: solid;
+}
+/*-----------------------------------------------------------*/
+.dropdownlist
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 22px;
+    width: 180px;
+    margin-left: 2px;
+    border-style: solid;
+}
+.dropdownlistgrid
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 22px;
+    width: 100px;
+    margin-left: 2px;
+    border-style: solid;
+}
+/*background color */
+
+
+
+.textbox1
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 16px;
+    width: 180px;
+    border-style: solid;
+}
+/*upper case*/
+.textbox2
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 16px;
+    width: 180px;
+    text-transform: uppercase;
+    border-style: solid;
+}
+
+.textboxnumeric1
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 16px;
+    width: 80px;
+    border-style: solid;
+}
+.Multilinetextbox1
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 22px;
+    width: 180px;
+    border-style: solid;
+}
+/*upper case*/
+.textboxnumeric2
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 16px;
+    width: 80px;
+    text-transform: uppercase;
+    border-style: solid;
+}
+.Multilinetextbox2
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 22px;
+    width: 180px;
+    text-transform: uppercase;
+    border: solid 1px #cccccc;
+}
+.dropdownlist1
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 20px;
+    width: 180px;
+    margin-left: 2px;
+    border: solid 1px #cccccc;
+}
+.dropdownlistgrid1
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 20px;
+    width: 100px;
+    margin-left: 2px;
+    border: solid 1px #cccccc;
+}
+
+************************************************************ .button
+{
+    /* Bottom right corner */
+    background: no-repeat right bottom;
+    width: 50px;
+    height: 25px;
+    border: 1px solid #cccccc;
+}
+.myButton
+{
+    -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background-color: #ededed;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 1px solid #003366;
+    display: inline-block;
+    color: #003366;
+    font-family: Verdana;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 4px 24px;
+    text-decoration: none;
+    height: 26px;
+}
+.myButton:hover
+{
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+    background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+    background-color: #dfdfdf;
+}
+.myButton:active
+{
+    position: relative;
+    top: 1px;
+}
+.myButtonaddrow
+{
+    -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+    background: -moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+    background-color: #ededed;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    color: #777777;
+    font-family: Verdana;
+    font-size: 10px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.myButtonaddrow:hover
+{
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+    background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+    background-color: #dfdfdf;
+}
+.myButtonaddrow:active
+{
+    position: relative;
+    top: 1px;
+}
+.heading_main
+{
+    position: relative;
+    font-size: 18px;
+    margin: 1em 0;
+    text-align: Center;
+    font-family: Verdana;
+    font-style: normal;
+    color: #CCFFFF;
+}
+.heading_sub
+{
+    position: relative;
+    font-size: 12px;
+    margin: 1em 0;
+    text-align: Left;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    color: #003366;
+}
+.normal_font
+{
+    font-size: 10px;
+    text-align: Left;
+    font-family: Verdana;
+    font-style: normal;
+}
+.normal_font_bold
+{
+    font-size: 11px;
+    margin: 1em 0;
+    text-align: Left;
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: bold;
+}
+.linkbutton
+{
+    width: 10px;
+    height: 10px;
+    font-size: 1.17em;
+    text-decoration: none;
+    color: #006699;
+}
+.linkbutton1
+{
+    width: 5px;
+    font-size: 0.9em;
+    text-decoration: none;
+    color: #006699;
+}
+.primaryStaticMenu
+{
+    background-color: transparent;
+    float: right;
+}
+.primaryStaticMenuItem
+{
+    width: 10em;
+    background-color: #f7f2ea;
+    border-width: 1px;
+    border-color: #efefef #aaab9c #ccc #efefef;
+    border-style: solid;
+    color: #777777;
+    padding: 0.5em 0 0.5em 1em;
+}
+.primaryStaticHover
+{
+    color: #800000;
+    background: #f0e7d7;
+}
+
+.primaryDynamicMenu
+{
+    background-color: #f7f2ea;
+    border-bottom: solid 1px #ccc;
+}
+.primaryDynamicMenuItem
+{
+    width: 10em;
+    background-color: #f7f2ea;
+    color: #777;
+    padding: 0.5em 0 0.5em 1em;
+    border-width: 1px;
+    border-color: #f7f2ea #aaab9c #f7f2ea #efefef;
+    border-style: solid;
+}
+.primaryDynamicHover
+{
+    color: #800000;
+    background: #f0e7d7;
+}
+
+.secondaryLevelOne
+{
+    background-color: transparent;
+    background-repeat: repeat-x;
+    margin: 1.5em 0 0 0;
+    padding: 5px 0 0 5px;
+    width: 12em;
+    height: 35px;
+}
+.secondaryLevelTwo
+{
+    background: #FAFBFB;
+    padding: 5px 0 5px 5px;
+}
+.secondaryStaticHover
+{
+    color: #800000;
+}
+.mGrid
+{
+    /*font: normal 11px Tahoma;*/
+    font: normal 11px verdana;
+    width: 100% 0;
+    background-color: #F2F2F2;
+    margin: 0 auto;
+    border: solid 1px #525252;
+    border-collapse: collapse;
+}
+.mGrid td
+{
+    padding: 2px;
+    border: solid 1px #c1c1c1;
+    color: #717171;
+}
+.mGrid th
+{
+    padding: 4px 2px;
+    color: #fff;
+    background: #75A71B /*#424242*/ url(../Image/grd_head.png) repeat-x top;
+    border-left: solid 1px #525252;
+    font-size: 0.5em;
+}
+.mGrid .alt
+{
+    background: #fcfcfc url(../Image/grd_alt.png) repeat-x top;
+}
+.mGrid .pgr
+{
+    background: #424242 url(../Image/grd_pgr.png) repeat-x top;
+}
+.mGrid .pgr table
+{
+    margin: 3px 0;
+}
+.mGrid .pgr td
+{
+    border-width: 0;
+    padding: 0 1px;
+    border-left: solid 1px #666;
+    font-weight: bold;
+    color: #fff;
+    line-height: 10px;
+}
+.mGrid .pgr a
+{
+    color: #666;
+    text-decoration: none;
+}
+.mGrid .pgr a:hover
+{
+    color: #000;
+    text-decoration: none;
+}
+
+.Menu
+{
+    /* background:transparent url(images/blueslate_background.gif) repeat-x;*/
+    background-color: #66CCFF;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold; /*border: solid 1px #fff !important;*/
+    border: none;
+}
+
+
+.menuhover
+{
+    color: #fff;
+    background: transparent url(images/blueslate_backgroundOVER.gif) no-repeat top center;
+}
+
+
+.WindowsStyle .ajax__combobox_inputcontainer .ajax__combobox_textboxcontainer input
+{
+    margin: 0;
+    border: solid 1px #7F9DB9;
+    border-right: 0px none;
+    padding: 1px 0px 0px 5px;
+    font-size: 12px;
+    height: 100px;
+    position: relative;
+}
+.WindowsStyle .ajax__combobox_inputcontainer .ajax__combobox_buttoncontainer button
+{
+    margin: 0;
+    padding: 0;
+    background-image: url(../Image/Icon.jpg);
+    border: solid 1px #7F9DB9;
+    height: 30px;
+}
+.WindowsStyle .ajax__combobox_itemlist
+{
+    border-color: #7F9DB9;
+    font-family: Verdana;
+    font-size: 10px;
+    font-style: normal;
+    height: 100px;
+}
+
+
+.formtext
+{
+    width: 300px;
+    border: solid 2px #003E55;
+}
+
+.head_tag
+{
+    background: url(../Image/main-bg.png) repeat-x center;
+    height: 20px;
+    color: White;
+    font-weight: bold;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    line-height: 20px;
+}
+
+.cross
+{
+    position: absolute;
+    top: 2px;
+    left: 730px;
+    height: 15px;
+}
+
+.watermark
+{
+    background: url(../Image/water_mark007.jpg) no-repeat center center;
+    width: 100px;
+    height: 150px;
+}
+
+.mGrid
+{
+    width: 100%;
+    background-color: #fff;
+    margin: 5px 0 10px 0;
+    border: solid 1px #525252;
+    border-collapse: collapse;
+}
+.mGrid td
+{
+    padding: 2px;
+    border: solid 1px #c1c1c1;
+    color: #717171;
+}
+.mGrid th
+{
+    padding: 4px 2px;
+    color: #fff;
+    background: #424242 url(../image/grd_head.png) repeat-x top;
+    border-left: solid 1px #525252;
+    font-size: 0.9em;
+}
+.mGrid .alt
+{
+    background: #fcfcfc url(../Image/grd_alt.png) repeat-x top;
+}
+.mGrid.pgr
+{
+    background: #424242 url(../Image/grd_pgr.png) repeat-x top;
+}
+.mGrid .pgr table
+{
+    margin: 5px 0;
+}
+.mGrid .pgr td
+{
+    border-width: 0;
+    padding: 0 6px;
+    border-left: solid 1px #666;
+    font-weight: bold;
+    color: #fff;
+    line-height: 10px;
+}
+.mGrid .pgr a
+{
+    color: #666;
+    text-decoration: none;
+}
+.mGrid .pgr a:hover
+{
+    color: #000;
+    text-decoration: none;
+}
+
+
+.holder
+{
+    width: 40%;
+    height: 50%;
+    border: 0px solid;
+    display: inline-table;
+    float: none;
+}
+
+
+.web_dialog_overlay
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #000000;
+    opacity: .15;
+    filter: alpha(opacity=15);
+    -moz-opacity: .15;
+    z-index: 101;
+    display: none;
+}
+.web_dialog
+{
+    display: none;
+    position: fixed;
+    width: 380px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    margin-left: -190px;
+    margin-top: -100px;
+    background-color: #ffffff;
+    border: 2px solid #336699;
+    padding: 0px;
+    z-index: 102;
+    font-family: Verdana;
+    font-size: 10pt;
+}
+.web_dialog_title
+{
+    border-bottom: solid 2px #336699;
+    background-color: #336699;
+    padding: 4px;
+    color: White;
+    font-weight: bold;
+}
+.web_dialog_title a
+{
+    color: White;
+    text-decoration: none;
+}
+.align_right
+{
+    text-align: right;
+}
+
+.mGrid tr
+{
+    vertical-align: top;
+}
+
