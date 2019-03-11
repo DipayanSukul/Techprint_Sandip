@@ -97,7 +97,26 @@ namespace TechPrint.Transaction
         protected void gvQuotationList_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
         {
             Int32 QuotationID = 0;
-            if (e.CommandName == "Edit")
+            if (e.CommandName == "Save")
+            {
+                QuotationID = Convert.ToInt32(e.CommandArgument.ToString());
+                GridViewRow gvr = (GridViewRow)(((ImageButton)e.CommandSource).NamingContainer);
+                int RowIndex = gvr.RowIndex;
+                var GetData = _dbContext.QuotationJobSheets.Where(p => p.QuotationID == QuotationID).FirstOrDefault();
+                if (GetData != null)
+                {
+                    DropDownList ddl = gvr.FindControl("ddlSelect") as DropDownList;
+                    GetData.Status = Convert.ToInt32(ddl.SelectedValue);
+                    _dbContext.SaveChanges();
+                }
+                else
+                {
+                    String message;
+                    message = "alert('You cannot Edit/Delete entry because Full/Part Payment already made this entry note.')";
+                    ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
+                }
+            }
+            else if (e.CommandName == "Edit")
             {
                 QuotationID = Convert.ToInt32(e.CommandArgument.ToString());
                 var GetData = _dbContext.QuotationJobSheets.Where(p => p.QuotationID == QuotationID && p.AmountPaid > 0).FirstOrDefault();

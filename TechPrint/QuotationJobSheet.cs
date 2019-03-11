@@ -43,5 +43,6 @@ namespace TechPrint
         public Nullable<System.DateTime> LMD { get; set; }
         public Nullable<int> DeleteBy { get; set; }
         public Nullable<System.DateTime> DeletedDate { get; set; }
+        public Nullable<int> Status { get; set; }
     }
 }

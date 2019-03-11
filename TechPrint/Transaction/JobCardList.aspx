@@ -134,9 +134,23 @@
                                     <asp:Label ID="lblOutstandingAmount" runat="server" Text='<%# Eval("OutstandingAmount") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>  
+                                    <asp:TemplateField HeaderText="STATUS" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" HeaderStyle-Width="75px">
+                                <ItemTemplate>
+                                    <asp:TextBox ID="txtStatus" runat="server" Text="" Visible = "false" />
+                                    <asp:DropDownList ID="ddlSelect" runat="server">
+                                        <asp:ListItem Text="SELECT" Value="0"></asp:ListItem>
+                                        <asp:ListItem Text="OPEN" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="WIP" Value="2"></asp:ListItem>
+                                        <asp:ListItem Text="CLOSED" Value="3"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                                     
-                                    <asp:TemplateField HeaderText="EDIT" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Width="50px">
+                                    <asp:TemplateField HeaderText="EDIT" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Width="80px">
                                         <ItemTemplate>
+                                            <asp:ImageButton ID="ibtnSave" runat="server" ImageUrl="~/Image/save.png" Height="14"
+                                                ToolTip="Save Note" Width="18" CommandName="Save" CommandArgument='<%#Eval("QuotationID")%>'
+                                                CausesValidation="false" />
                                             <asp:ImageButton ID="ibtnedit" runat="server" ImageUrl="~/Image/edit.png" Height="14"
                                                 ToolTip="Edit Note" Width="18" CommandName="Edit" CommandArgument='<%#Eval("QuotationID")%>'
                                                 CausesValidation="false" />

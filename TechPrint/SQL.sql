@@ -1,0 +1,1 @@
+﻿ALTER TABLE QuotationJobSheet ADD Status INT NULL

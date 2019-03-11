@@ -466,6 +466,24 @@
                     </tr>
                     <tr>
                         <td>
+                            Jobsheet Type :
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ddlJobSheetType" runat="server">
+                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="Pakka" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="Kachcha" Value="2"></asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                         <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             Payment Mode:
                         </td>
                         <td>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TechPrintModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TechPrintModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerID" />
@@ -158,6 +158,7 @@ warning 6002: The table/view 'TechPrint.dbo.PaymentDetail' does not have a prima
           <Property Name="LMD" Type="datetime" />
           <Property Name="DeleteBy" Type="int" />
           <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="QuotationJobSheetDetail">
           <Key>
@@ -305,8 +306,7 @@ warning 6002: The table/view 'TechPrint.dbo.PaymentDetail' does not have a prima
     FROM [dbo].[PaymentDetail] AS [PaymentDetail]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TechPrintModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -435,6 +435,7 @@ warning 6002: The table/view 'TechPrint.dbo.PaymentDetail' does not have a prima
           <Property Name="LMD" Type="DateTime" Precision="3" />
           <Property Name="DeleteBy" Type="Int32" />
           <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
         </EntityType>
         <EntityType Name="QuotationJobSheetDetail">
           <Key>
@@ -528,7 +529,7 @@ warning 6002: The table/view 'TechPrint.dbo.PaymentDetail' does not have a prima
           <EntitySet Name="PaperRates" EntityType="Self.PaperRate" />
           <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetail" />
           <FunctionImport Name="USP_BIND_MASTER_DATA" ReturnType="Collection(TechPrintModel.USP_BIND_MASTER_DATA_Result)">
-            <Parameter Name="MasterTypeId" Mode="In" Type="Int32" />
+          <Parameter Name="MasterTypeId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="USP_MANAGE_JOB_SHEET">
             <Parameter Name="QuotationID" Mode="In" Type="Int64" />
@@ -704,6 +705,7 @@ warning 6002: The table/view 'TechPrint.dbo.PaymentDetail' does not have a prima
           <EntitySetMapping Name="QuotationJobSheets">
             <EntityTypeMapping TypeName="TechPrintModel.QuotationJobSheet">
               <MappingFragment StoreEntitySet="QuotationJobSheet">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="QuotationID" ColumnName="QuotationID" />
                 <ScalarProperty Name="QuotationNO" ColumnName="QuotationNO" />
                 <ScalarProperty Name="QuotationDate" ColumnName="QuotationDate" />

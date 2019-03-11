@@ -1,4 +1,4 @@
-﻿using MyUtil.CommonMethod;
+﻿
 using System;
 using System.Data;
 using System.Linq;

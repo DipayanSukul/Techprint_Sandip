@@ -1,4 +1,4 @@
-﻿using MyUtil.CommonMethod;
+﻿
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -1635,7 +1635,7 @@ namespace TechPrint.Transaction
             {
                 message = "alert('" + ex.ToString() + "')";
                 ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
-                ErrorLog.WriteToErrorLog(Convert.ToString(System.Reflection.MethodBase.GetCurrentMethod().Name), ex);
+                //ErrorLog.WriteToErrorLog(Convert.ToString(System.Reflection.MethodBase.GetCurrentMethod().Name), ex);
             }
         }
 

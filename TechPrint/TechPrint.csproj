@@ -39,8 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxControlToolkit">
-      <HintPath>..\..\..\..\..\Desktop\TechPrint\TechPrint\TechPrint\bin\AjaxControlToolkit.dll</HintPath>
+    <Reference Include="AjaxControlToolkit, Version=18.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.18.1.1\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
@@ -161,6 +162,7 @@
     <Content Include="Report\ReportParameter.aspx" />
     <Content Include="Report\ViewReport.aspx" />
     <Content Include="Report\PrintBill.aspx" />
+    <Content Include="SQL.sql" />
     <Content Include="TechPrintEntities.edmx.diagram">
       <DependentUpon>TechPrintEntities.edmx</DependentUpon>
     </Content>
