@@ -55,6 +55,7 @@ warning 6002: The table/view 'TechPrint.dbo.PaperRate' does not have a primary k
           <Property Name="LMD" Type="datetime" />
           <Property Name="DeleteBy" Type="int" />
           <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="JobSheetType" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'TechPrint.dbo.PaymentDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -257,6 +258,7 @@ warning 6002: The table/view 'TechPrint.dbo.PaymentDetail' does not have a prima
           <Parameter Name="RequestBy" Type="int" Mode="In" />
           <Parameter Name="FinYear" Type="varchar" Mode="In" />
           <Parameter Name="OpMode" Type="int" Mode="In" />
+          <Parameter Name="JobSheetType" Type="int" Mode="In" />
         </Function>
         <Function Name="USP_SEARCH_PAYMENT_LIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CurrentSession" Type="nvarchar" Mode="In" />
@@ -343,6 +345,7 @@ warning 6002: The table/view 'TechPrint.dbo.PaymentDetail' does not have a prima
           <Property Name="LMD" Type="DateTime" Precision="3" />
           <Property Name="DeleteBy" Type="Int32" />
           <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="JobSheetType" Type="Int32" />
         </EntityType>
         <EntityType Name="PaymentMode">
           <Key>
@@ -571,6 +574,7 @@ warning 6002: The table/view 'TechPrint.dbo.PaymentDetail' does not have a prima
             <Parameter Name="RequestBy" Mode="In" Type="Int32" />
             <Parameter Name="FinYear" Mode="In" Type="String" />
             <Parameter Name="OpMode" Mode="In" Type="Int32" />
+            <Parameter Name="JobSheetType" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="USP_SEARCH_PAYMENT_LIST">
             <Parameter Name="CurrentSession" Mode="In" Type="String" />
@@ -621,6 +625,7 @@ warning 6002: The table/view 'TechPrint.dbo.PaymentDetail' does not have a prima
           <EntitySetMapping Name="Payments">
             <EntityTypeMapping TypeName="TechPrintModel.Payment">
               <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="JobSheetType" ColumnName="JobSheetType" />
                 <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
                 <ScalarProperty Name="PaymentNumber" ColumnName="PaymentNumber" />
                 <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />

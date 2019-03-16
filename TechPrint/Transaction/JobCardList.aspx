@@ -36,6 +36,7 @@
                                 <asp:ListItem Value="2">DATE</asp:ListItem>
                                 <asp:ListItem Value="4">QuotationNO</asp:ListItem>
                                 <asp:ListItem Value="5">CUSTOMER</asp:ListItem>
+                                <asp:ListItem Value="5">Status</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                         <td>

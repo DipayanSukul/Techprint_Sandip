@@ -135,7 +135,7 @@ namespace TechPrint.Transaction
                         , txtPaymentDetail.Text
                         , Convert.ToInt32(HttpContext.Current.Session["UserID"].ToString())
                         , ApplicationUtility.CurrentSession()
-                        , 1);
+                        , 1, 0);
                     message = "alert('Payment saved sucessfully.')";
                     ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                     ResetControl();                    
@@ -150,7 +150,7 @@ namespace TechPrint.Transaction
                         , txtPaymentDetail.Text.ToUpper()
                         , Convert.ToInt32(HttpContext.Current.Session["UserID"].ToString())
                         , ApplicationUtility.CurrentSession()
-                        , 2);
+                        , 2, 0);
                     message = "alert('Payment note updated sucessfully')";
                     ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                     ResetControl();
@@ -182,7 +182,7 @@ namespace TechPrint.Transaction
                         , txtPaymentDetail.Text
                         , Convert.ToInt32(HttpContext.Current.Session["UserID"].ToString())
                         , ApplicationUtility.CurrentSession()
-                        , 3);
+                        , 3, 0);
                     message = "alert('Payment note deleted sucessfully')";
                     ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
                     ResetControl();

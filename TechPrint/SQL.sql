@@ -1,1 +1,2 @@
 ﻿ALTER TABLE QuotationJobSheet ADD Status INT NULL
+ALTER TABLE PAYMENT ADD JobSheetType INT NULL

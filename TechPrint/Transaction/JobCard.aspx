@@ -107,7 +107,7 @@
                         }
                         txtTotalCost[i].value = LineAmount.toFixed(2);
                         //TotalAmount += parseFloat(LineAmount);
-                        debugger;
+                        
 
                         //GST Calculation....
                         if (parseFloat(txtGSTPercenatge.value) <= 12) {
@@ -137,7 +137,7 @@
             }
             //txtGSTWOAmount.value = GSTWOAmount.toFixed(2);
 
-            debugger;
+            
             //Printing Detail Costing
             var gridPrintDetail = document.getElementById("<%= gvPrintingDetail.ClientID %>");
             if (gridPrintDetail != null) {
@@ -808,6 +808,17 @@
                                        Style="text-align: right"></asp:TextBox>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:TemplateField HeaderText="STATUS" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right" HeaderStyle-Width="75px">
+                                <ItemTemplate>
+                                    <asp:TextBox ID="txtStatus" runat="server" Text="" Visible = "false" />
+                                    <asp:DropDownList ID="ddlSelect" runat="server">
+                                        <asp:ListItem Text="SELECT" Value="0"></asp:ListItem>
+                                        <asp:ListItem Text="OPEN" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="WIP" Value="2"></asp:ListItem>
+                                        <asp:ListItem Text="CLOSED" Value="3"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="ACTION" HeaderStyle-HorizontalAlign="Left">
                                 <ItemTemplate>
                                     <asp:ImageButton ID="ibtnAddFabricationCosting" runat="server" ImageUrl="~/Image/AddRow.png" Height="18"
@@ -909,11 +920,19 @@
                                        onkeyup="return GSTCalculation();" Style="text-align: right"></asp:TextBox>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            
+                            <asp:TemplateField HeaderText="NARRATION">
+                                <ItemTemplate>
+                                    <asp:TextBox ID="txtNarration" runat="server" Width="280px" Height="18px" Text=""
+                                                 BorderStyle="Inset" CssClass="textbox"
+                                                 BackColor="White" ForeColor="Black" onFocus="this.select()" autocomplete="off" Style="text-align: Left"></asp:TextBox>
+                                </ItemTemplate>
+                            </asp:TemplateField>
 
                              <asp:TemplateField HeaderText="UNIT" HeaderStyle-HorizontalAlign="Left">
                                 <ItemTemplate>
                                     <asp:DropDownList ID="ddlTransportUnit" runat="server" class="styled-select"
-                                        Width="500px" AppendDataBoundItems="true" BackColor="White" ForeColor="Black">
+                                        Width="200px" AppendDataBoundItems="true" BackColor="White" ForeColor="Black">
                                     </asp:DropDownList>
                                 </ItemTemplate>
                             </asp:TemplateField>

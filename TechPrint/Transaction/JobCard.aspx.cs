@@ -1597,7 +1597,8 @@ namespace TechPrint.Transaction
                        , txtPaymentDetail.Text
                        , Convert.ToInt32(HttpContext.Current.Session["UserID"].ToString())
                        , ApplicationUtility.CurrentSession()
-                       , 1);
+                       , 1
+                       , Convert.ToInt32(ddlJobSheetType.SelectedValue));
 
 
 

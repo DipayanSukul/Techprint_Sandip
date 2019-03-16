@@ -163,7 +163,7 @@ namespace TechPrint
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_MANAGE_PRINT_RATE", cuttingSizeIDParameter, requestByParameter, opModeParameter);
         }
     
-        public virtual int USP_PAYMENT(Nullable<long> paymentID, Nullable<System.DateTime> paymentDate, Nullable<int> customerID, Nullable<int> paymentMode, Nullable<decimal> paidAmount, string paymentDetail, Nullable<int> requestBy, string finYear, Nullable<int> opMode)
+        public virtual int USP_PAYMENT(Nullable<long> paymentID, Nullable<System.DateTime> paymentDate, Nullable<int> customerID, Nullable<int> paymentMode, Nullable<decimal> paidAmount, string paymentDetail, Nullable<int> requestBy, string finYear, Nullable<int> opMode, Nullable<int> jobSheetType)
         {
             var paymentIDParameter = paymentID.HasValue ?
                 new ObjectParameter("PaymentID", paymentID) :
@@ -201,7 +201,11 @@ namespace TechPrint
                 new ObjectParameter("OpMode", opMode) :
                 new ObjectParameter("OpMode", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_PAYMENT", paymentIDParameter, paymentDateParameter, customerIDParameter, paymentModeParameter, paidAmountParameter, paymentDetailParameter, requestByParameter, finYearParameter, opModeParameter);
+            var jobSheetTypeParameter = jobSheetType.HasValue ?
+                new ObjectParameter("JobSheetType", jobSheetType) :
+                new ObjectParameter("JobSheetType", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_PAYMENT", paymentIDParameter, paymentDateParameter, customerIDParameter, paymentModeParameter, paidAmountParameter, paymentDetailParameter, requestByParameter, finYearParameter, opModeParameter, jobSheetTypeParameter);
         }
     
         public virtual int USP_SEARCH_PAYMENT_LIST(string currentSession, string searchColumn, string searchText, string fromDate, string toDate)
